@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var stateObject = {
+		"India" : {
+			"Bangalore" ,
+			"Delhi" 
+		},
+		"US" : {
+			"Alaska" ,
+			"Texas" 
+		}
+	}
+
+	window.onload = function() {
+		var countySel = document.getElementById("countySel");
+		var stateSel = document.getElementById("stateSel");
+
+		for ( var country in stateObject) {
+			countySel.options[countySel.options.length] = new Option(country,
+					country);
+		}
+
+		countySel.onchange = function() {
+			stateSel.length = 1; // remove all options bar first
+			if (this.selectedIndex < 1)
+				return; // done   
+			for ( var state in stateObject) {
+				stateSel.options[stateSel.options.length] = new Option(state);
+			}
+		}
+
+		countySel.onchange(); // reset in case page is reloaded
+
+
+	}
+</script>
+</head>
+<body>
+<h1>Web Assignment - Using Html and Javascript</h1>
+	<form name="myForm" id="myForm">
+		Select Country : <select name="state" id="countySel" size="1">
+			<option value="" selected="selected">Select Country</option>
+		</select></br> </br> Select State : <select name="countrya" id="stateSel" size="1">
+			<option value="" selected="selected">Select Country First</option>
+		</select><!-- </br> </br> Select District : <select name="district" id="districtSel" size="1">
+			<option value="" selected="selected">Select State First</option>
+		</select>  --><br> <input type="submit">
+	</form>
+</body>
+</html>
